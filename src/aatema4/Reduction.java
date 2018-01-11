@@ -63,11 +63,13 @@ public class Reduction {
 						out.print(i * noOfColors + j);
 						out.print("V~x");
 						out.print(i * noOfColors + k);
-						out.print(")^");
+						out.print(")");
+						if (i != noOfVertices - 1 && j != noOfColors - 2 && k != noOfColors - 1)
+							out.print("^");
 					}
 				}
 			}
-			if (counter == 0)
+			if (noOfEdges > 0)
 				out.print("^");
 			counter = 0; 
 			for (Entry<Integer, Integer> edge : edges.entrySet()) {
