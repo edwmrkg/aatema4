@@ -2,14 +2,13 @@ package aatema4;
 
 import java.io.*;
 import java.util.*;
-import java.util.Map.Entry;
 
 public class Reduction {
 
 	private int noOfVertices;
 	private int noOfEdges;
 	private int noOfColors;
-	private TreeMap<Integer, Integer> edges = new TreeMap<Integer, Integer>();
+	private List<String> edges = new LinkedList<String>();
 
 	/**
 	 * Reads from file and store the data of the graph. Number of vertices, of edges
@@ -23,10 +22,8 @@ public class Reduction {
 			noOfVertices = Integer.parseInt(line[0]);
 			noOfEdges = Integer.parseInt(line[1]);
 			noOfColors = Integer.parseInt(line[2]);
-
 			for (int i = 0; i < noOfEdges; i++) {
-				line = in.readLine().split(" ");
-				edges.put(Integer.parseInt(line[0]), Integer.parseInt(line[1]));
+				edges.add(in.readLine());
 			}
 			in.close();
 		} catch (Exception e) {
@@ -54,33 +51,32 @@ public class Reduction {
 			}
 			if (noOfColors > 1)
 				out.print("^");
-			int counter = 0;
 			for (int i = 0; i < noOfVertices; i++) {
 				for (int j = 0; j < noOfColors - 1; j++) {
 					for (int k = j + 1; k < noOfColors; k++) {
-						++counter;
 						out.print("(~x");
 						out.print(i * noOfColors + j);
 						out.print("V~x");
 						out.print(i * noOfColors + k);
 						out.print(")");
-						if (i != noOfVertices - 1 && j != noOfColors - 2 && k != noOfColors - 1)
+						if (!(i == noOfVertices - 1 && j == noOfColors - 2 && k == noOfColors - 1))
 							out.print("^");
 					}
 				}
 			}
 			if (noOfEdges > 0)
 				out.print("^");
-			counter = 0; 
-			for (Entry<Integer, Integer> edge : edges.entrySet()) {
-				int vertex1 = edge.getKey();
-				int vertex2 = edge.getValue();
-				for (int i = 0; i < noOfColors; i++) {
+			int counter = 0; 
+			for (int i = 0; i < noOfEdges; i++) {
+				String[] temp = edges.get(i).split(" ");
+				int vertex1 = Integer.parseInt(temp[0]);
+				int vertex2 = Integer.parseInt(temp[1]);
+				for (int j = 0; j < noOfColors; j++) {
 					++counter;
 					out.print("(~x");
-					out.print(noOfColors * vertex1 + i);
+					out.print(noOfColors * vertex1 + j);
 					out.print("V~x");
-					out.print(noOfColors * vertex2 + i);
+					out.print(noOfColors * vertex2 + j);
 					out.print(")");
 					if (counter < noOfColors * noOfEdges)
 						out.print("^");
