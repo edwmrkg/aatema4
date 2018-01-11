@@ -1,0 +1,23 @@
+TEMA 4 - AA - GRIGORE EDWIN MARK - 324CB --------------------------------------
+
+
+Se vor pune conditiile urmatoare pentru a se forma clauzele pentru SAT:
+1. Un nod trebuie sa aiba cel putin o culoare. Prin urmare, se vor construi cla
+uze care cuprind toti literalii nodului respectiv corespunzatori fiecarei culor
+i. Clauza are valoarea 1 daca cel putin un literal este 1 (nodul este colorat i
+n cel putin o culoare).
+
+2. Un nod trebuie sa aiba maxim o culoare. Se vor construi clauze grupand liter
+alii corespunzatori culorilor unui nod doi cate doi. Se va folosi valoarea nega
+ta a acestora. Astfel, daca vreun nod va avea doua culori, una dintre aceste cl
+auze va avea valoarea 0, deci SAT = 0.
+
+Din conditiile 1 si 2 rezulta ca un nod are o singura culoare. 
+
+3. Culorile a doua noduri adiacente trebuie sa fie diferite. Se va parcurge lis
+ta cu muchiile si, pentru fiecare muchie se vor construi clauze folosind litera
+lii celor doua noduri corespunzatori fiecarei culori. Astfel, daca nodurile con
+ectate o muchie au aceeasi culoare, clauza care verifica culoarea respectiva va
+avea valoarea 0, deci SAT = 0.
+
+Complexitatea acestui algoritm este O(nk^2). 

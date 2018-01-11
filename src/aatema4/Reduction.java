@@ -32,6 +32,13 @@ public class Reduction {
 		}
 	}
 
+	/**
+	 * Solves the reduction by building the clauses of SAT.
+	 * Cases considered: all colors of a vertex in a clause (the vertex must be colored),
+	 * colors in pairs of two (there shouldn't be colored in two colors),
+	 * all colors by edges (two connected vertices shouldn't be colored with the same color). 
+	 * @param file
+	 */
 	public void solve(String file) {
 		try {
 			PrintWriter out = new PrintWriter(file);
