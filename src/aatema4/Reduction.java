@@ -54,9 +54,11 @@ public class Reduction {
 			}
 			if (noOfColors > 1)
 				out.print("^");
+			int counter = 0;
 			for (int i = 0; i < noOfVertices; i++) {
 				for (int j = 0; j < noOfColors - 1; j++) {
 					for (int k = j + 1; k < noOfColors; k++) {
+						++counter;
 						out.print("(~x");
 						out.print(i * noOfColors + j);
 						out.print("V~x");
@@ -65,9 +67,9 @@ public class Reduction {
 					}
 				}
 			}
-			if (noOfColors <= 1)
+			if (counter == 0)
 				out.print("^");
-			int counter = 0;
+			counter = 0;
 			for (Entry<Integer, Integer> edge : edges.entrySet()) {
 				int vertex1 = edge.getKey();
 				int vertex2 = edge.getValue();
