@@ -53,6 +53,7 @@ public class Reduction {
 					out.print("^");
 			}
 			if (noOfColors > 0) {
+				out.print("^");
 				for (int i = 0; i < noOfVertices; i++) {
 					for (int j = 0; j < noOfColors - 1; j++) {
 						for (int k = j + 1; k < noOfColors; k++) {
