@@ -69,7 +69,7 @@ public class Reduction {
 			}
 			if (counter == 0)
 				out.print("^");
-			counter = 0;
+			counter = 0; 
 			for (Entry<Integer, Integer> edge : edges.entrySet()) {
 				int vertex1 = edge.getKey();
 				int vertex2 = edge.getValue();
