@@ -1,11 +1,11 @@
 .PHONY: build clean run
 
-build: tema1
+build: tema4
 
 run:
 	java -Xmx1G Main
 
-tema1:
+tema4:
 	javac *.java
 
 clean:
