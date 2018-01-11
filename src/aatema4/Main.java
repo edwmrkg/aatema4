@@ -6,6 +6,6 @@ public class Main {
 		Reduction red1 = new Reduction();
 		red1.readFile("test.in");
 		red1.solve("test.out");
-	}
+	} 
 
 }
