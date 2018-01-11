@@ -52,33 +52,34 @@ public class Reduction {
 				if (i < noOfVertices - 1)
 					out.print("^");
 			}
-			if (noOfColors > 1) {
+			if (noOfColors > 1)
 				out.print("^");
-				for (int i = 0; i < noOfVertices; i++) {
-					for (int j = 0; j < noOfColors - 1; j++) {
-						for (int k = j + 1; k < noOfColors; k++) {
-							out.print("(~x");
-							out.print(i * noOfColors + j);
-							out.print("V~x");
-							out.print(i * noOfColors + k);
-							out.print(")^");
-						}
+			for (int i = 0; i < noOfVertices; i++) {
+				for (int j = 0; j < noOfColors - 1; j++) {
+					for (int k = j + 1; k < noOfColors; k++) {
+						out.print("(~x");
+						out.print(i * noOfColors + j);
+						out.print("V~x");
+						out.print(i * noOfColors + k);
+						out.print(")^");
 					}
 				}
-				int counter = 0;
-				for (Entry<Integer, Integer> edge : edges.entrySet()) {
-					int vertex1 = edge.getKey();
-					int vertex2 = edge.getValue();
-					for (int i = 0; i < noOfColors; i++) {
-						++counter;
-						out.print("(~x");
-						out.print(noOfColors * vertex1 + i);
-						out.print("V~x");
-						out.print(noOfColors * vertex2 + i);
-						out.print(")");
-						if (counter < noOfColors * noOfEdges)
-							out.print("^");
-					}
+			}
+			if (noOfColors <= 1)
+				out.print("^");
+			int counter = 0;
+			for (Entry<Integer, Integer> edge : edges.entrySet()) {
+				int vertex1 = edge.getKey();
+				int vertex2 = edge.getValue();
+				for (int i = 0; i < noOfColors; i++) {
+					++counter;
+					out.print("(~x");
+					out.print(noOfColors * vertex1 + i);
+					out.print("V~x");
+					out.print(noOfColors * vertex2 + i);
+					out.print(")");
+					if (counter < noOfColors * noOfEdges)
+						out.print("^");
 				}
 			}
 			out.println();
